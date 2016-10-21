@@ -16,19 +16,19 @@ http://data.trimble.com/market/provider/OpenStreetMap.html
 
 Selecting a random polygon at a time, we use the Google Map API to download satellite imagery, centered on the polygon. 
 
-[[https://github.com/UNGlobalPulse/PLNY-refugees-satellite-imagery/blob/master/figures/3-1.png]]
+[[https://github.com/gbrouwer/OpenNets-SegmentNet/blob/master/figures/3-1.png]]
 
 We then find all other polygons that are completely within the image. 
 
-[[https://github.com/UNGlobalPulse/PLNY-refugees-satellite-imagery/blob/master/figures/3-2.png]]
+[[https://github.com/gbrouwer/OpenNets-SegmentNet/blob/master/figures/3-2.png]]
 
 Rasterizing the polygons provides us with a binary image mask: 0 for no building, 1 for building. 
 
-[[https://github.com/UNGlobalPulse/PLNY-refugees-satellite-imagery/blob/master/figures/3-3.png]]
+[[https://github.com/gbrouwer/OpenNets-SegmentNet/blob/master/figures/3-3.png]]
 
 Finally, we transform these binary masks by computing the signed distance of each point to the boundary of the polygon. These distances are centered at 128, such that higher values mean points closer to the center of the polygon, while values lower than 128 indicate points outside of the polygon (i.e. no building). 
 
-[[https://github.com/UNGlobalPulse/PLNY-refugees-satellite-imagery/blob/master/figures/3-4.png]]
+[[https://github.com/gbrouwer/OpenNets-SegmentNet/blob/master/figures/3-4.png]]
 
 ### Neural Network
 
@@ -38,11 +38,11 @@ The neural network close resembles the architecture of a auto-encoder, with the 
 
 The left column represents the input to the neural net: the actual satellite images. The middle column represents the output of the neural net: a black/white gradient image indicating the confidence of the neural net of having detected a building/structure at that location. Finally, the right column overlays both images. 
 
-[[https://github.com/UNGlobalPulse/PLNY-refugees-satellite-imagery/blob/master/figures/3-5.png]]
+[[https://github.com/gbrouwer/OpenNets-SegmentNet/blob/master/figures/3-5.png]]
 
-[[https://github.com/UNGlobalPulse/PLNY-refugees-satellite-imagery/blob/master/figures/3-6.png]]
+[[https://github.com/gbrouwer/OpenNets-SegmentNet/blob/master/figures/3-6.png]]
 
-[[https://github.com/UNGlobalPulse/PLNY-refugees-satellite-imagery/blob/master/figures/3-7.png]]
+[[https://github.com/gbrouwer/OpenNets-SegmentNet/blob/master/figures/3-7.png]]
 
 
 ### Generalization
